@@ -42,14 +42,14 @@
         <div class="control-group">
           <label class="control-label" for="login_email"><spring:message code="login.username" /></label>
           <div class="controls">
-            <input type="text" name="j_username" autofocus="autofocus" class="required" />
+            <input type="text" name="username" autofocus="autofocus" class="required" />
           </div>
         </div>
 
         <div class="control-group">
           <label class="control-label" for="login_password"><spring:message code="login.password" /></label>
           <div class="controls">
-            <input type="password" name="j_password" class="required" />
+            <input type="password" name="password" class="required" />
           </div>
         </div>
 
