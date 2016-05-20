@@ -34,7 +34,7 @@
 
   <div class="container">
 
-    <form name="loginForm" action="j_spring_security_check" method="post" class="form-horizontal">
+    <form name="loginForm" action="login" method="post" class="form-horizontal">
       <fieldset>
         <legend>Please Login</legend>
         <br />

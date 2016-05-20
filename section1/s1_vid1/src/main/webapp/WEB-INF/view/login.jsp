@@ -35,7 +35,7 @@
 
   <div class="container">
 
-    <form name='f' action="<c:url value='j_spring_security_check' />" method='POST'>
+    <form name='f' action="<c:url value='login' />" method='POST'>
 
       <table>
         <tr>
