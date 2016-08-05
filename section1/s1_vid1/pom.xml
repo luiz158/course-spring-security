@@ -9,6 +9,17 @@ Section 1 - Video 1</description>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>4.0.3.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 	<dependencies>
 
 		<!-- Spring Security -->
@@ -189,12 +200,53 @@ Section 1 - Video 1</description>
 				<filtering>true</filtering>
 			</resource>
 		</resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-g</arg>
+                    </compilerArgs>
+                    <source>${java-version}</source>
+                    <target>${java-version}</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.3.8.v20160314</version>
+                <configuration>
+                    <jvmArgs>-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=1044</jvmArgs>
+                    <stopKey>CTRL+C</stopKey>
+                    <stopPort>8999</stopPort>
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <webAppSourceDirectory>${basedir}/src/main/webapp/</webAppSourceDirectory>
+                    <webAppConfig>
+                        <descriptor>${basedir}/src/main/webapp/WEB-INF/web.xml</descriptor>
+                    </webAppConfig>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+        </plugins>
 	</build>
 
 	<properties>
+        <java-version>1.8</java-version>
 
 		<!-- Spring -->
-		<spring.version>3.2.0.RELEASE</spring.version>
+		<spring.version>4.0.3.RELEASE</spring.version>
 		<spring-security.version>3.1.3.RELEASE</spring-security.version>
 
 		<!-- marshalling -->
@@ -216,6 +268,7 @@ Section 1 - Video 1</description>
 		<org.hamcrest.version>1.3</org.hamcrest.version>
 		<mockito.version>1.9.5</mockito.version>
 
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 </project>
