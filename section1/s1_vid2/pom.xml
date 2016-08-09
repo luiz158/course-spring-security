@@ -165,7 +165,7 @@ Section 1 - Video 1</description>
 
 		<dependency>
 			<groupId>junit</groupId>
-			<artifactId>junit-dep</artifactId>
+			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
